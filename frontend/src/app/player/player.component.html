@@ -1,0 +1,10 @@
+<div class="flex justify-content-start px-3 py-5 bg-gray-200 gap-3">
+  <p-image [src]="player.thumbnail" alt="Image"[imageStyle]="{width:'100%'}" class="w-2 md:w-4"></p-image>
+  <div class="flex flex-column flex-grow-1 justify-content-between">
+    <span class="text-xl font-bold">{{player.name}}</span>
+    <span class="text-gray-800">{{player.position}}</span>
+    <span class="text-gray-800">birthDate: {{player.born|date:'YYY-MM-dd'}}</span>
+    <span class="text-gray-800">price: {{player.singin?(player.singin.amount|currency:player.singin.currency):'Free'}}</span>
+  </div>
+
+</div>

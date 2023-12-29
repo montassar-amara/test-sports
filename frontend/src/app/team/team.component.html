@@ -1,0 +1,39 @@
+<p-toolbar>
+  <span class="p-input-icon-left flex justify-content-start" style="width:100%">
+    <button pButton label="Back" icon="pi pi-chevron-left" class="p-button-text" (click)="goBack()"></button>
+    <div class="flex flex-grow-1 justify-content-center">
+      <div class="flex text-center font-bold align-items-center">{{(team$|async)?.name || 'Team Not Found'}}</div>
+    </div>
+  </span>
+
+</p-toolbar>
+
+<p-scrollPanel [style]="{width: '100%', height: 'calc(100dvh - 120px)'}">
+  <ng-container *ngIf="(team$|async) as team; else noTeams">
+    <div class="grid pt-3">
+      <ng-container *ngIf="team.players.length>0;else noPlayers">
+        <div class="col-12 md:col-6 align-content-center" *ngFor="let player of team.players">
+          <app-player [player]="player"></app-player>
+        </div>
+      </ng-container>
+
+    </div>
+
+  </ng-container>
+</p-scrollPanel>
+
+<ng-template #noTeams>
+  <div class="flex justify-content-center">
+    <span class="font-bold">
+      Team Not Found
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #noPlayers>
+  <div class="flex justify-content-center w-full">
+    <span class="font-bold">
+      This team has no players yet.
+    </span>
+  </div>
+</ng-template>

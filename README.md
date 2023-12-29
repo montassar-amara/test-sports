@@ -1,7 +1,7 @@
 This repo includes both frontend and backend for the test.
 
 
-after cloning: run npm install in both /front and /back
+after cloning: run npm install in both /frontend and /back
 
 start the dev server with:
 

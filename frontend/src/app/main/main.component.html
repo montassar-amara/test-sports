@@ -1,0 +1,37 @@
+<p-toolbar>
+  <span class="p-input-icon-left p-fluid" [style]="'width:'+(selectedLeague?'calc(100% - 90px)':'100%')">
+    <i class="pi pi-search"></i>
+    <p-autoComplete
+    #autocmp
+    [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"
+    [ngModel]="filter"
+    class="w-20rem"
+    [suggestions]="(results$ | async)!"
+    (completeMethod)="search($event)"
+    placeholder="Search by league"
+    field="name"
+    [showClear]="true"
+    (onSelect)="selectLeague($event)"
+    (onClear)="clearInput()"
+    emptyMessage="No suggestions for this entry"
+    >
+  </p-autoComplete>
+</span>
+<button label="cancel" pButton class="p-button-text" *ngIf="selectedLeague" (click)="autocmp.clear()"></button>
+
+</p-toolbar>
+
+<p-scrollPanel [style]="{width: '100%', height: 'calc(100dvh - 120px)'}">
+  <ng-container *ngIf="selectedLeague && selectedLeague.teams.length>0; else noTeams">
+    <app-league></app-league>
+  </ng-container>
+
+</p-scrollPanel>
+
+<ng-template #noTeams>
+  <div class="flex justify-content-center">
+    <span class="font-bold">
+      This league has no teams yet.
+    </span>
+  </div>
+</ng-template>

@@ -1,0 +1,11 @@
+i {
+  z-index: 1;
+}
+::ng-deep .p-autocomplete .p-inputtext {
+  padding-left: 38px;
+}
+:host ::ng-deep .p-toolbar {
+  position: sticky;
+  z-index: 3;
+  top: 0;
+}

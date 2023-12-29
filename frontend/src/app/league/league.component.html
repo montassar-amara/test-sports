@@ -1,0 +1,5 @@
+<div class="grid pt-3">
+  <div class="col-6 md:col-4 lg:col-3 align-content-center" *ngFor="let team of (league$|async)?.teams ">
+    <p-image [src]="team.thumbnail" alt="Image"[imageStyle]="{width:'100%'}" class="cursor-pointer" (click)="showTeam(team)"></p-image>
+  </div>
+</div>
